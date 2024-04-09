@@ -30,6 +30,34 @@
 		countries = [...countries, `Italy`];
 	}
 
+	/*--------Adding a string----------*/
+	let album = [
+		{track: `Track 1`, length: 180},
+		{track: `Track 2`, length: 240},
+		{track: `Track 3`, length: 280}
+	]
+
+	$: albumLength = getAlbumLength(album)
+
+	function getAlbumLength(album) {
+		let lenghtSeconds = album.reduce((totalLength, currentValue) => {
+			return totalLength + currentValue.length
+		}, 0)
+
+		let [minutes, seconds] =
+		(lenghtSeconds / 60)
+		.toFixed(2)
+		.toString()
+		.split('.')
+
+		return { minutes, seconds };
+	};
+
+	function addTrack() {
+		album = [...album, {track: 'Track 4', length: 420}]
+	}
+
+
 </script>
 
 
@@ -46,6 +74,8 @@
 <p>The new country is {newCountry}</p>
 <button on:click={addCountry}>Add country</button>
 
+<p>Album length is {albumLength.minutes} minutes and {albumLength.seconds} seconds.</p>
+<button on:click={addTrack}>Add track</button>
 
 
 
