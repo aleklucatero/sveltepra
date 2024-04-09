@@ -1,5 +1,6 @@
 <script>
-    import { each } from "svelte/internal";
+    import { errorToJSON } from "next/dist/server/render";
+import { each } from "svelte/internal";
 
     // import { add } from "date-fns";
 
@@ -60,6 +61,8 @@
 
 	// }
 
+	/*--------Toggle Log in/ Log out button---------*/
+
 	// let user = {
 	// 	loggedIn: true
 	// }
@@ -68,13 +71,26 @@
 	// 	user.loggedIn = !user.loggedIn;
 	// };
 
-	let todos = [
-		{ id: 1, text: `Todo 1`, completed: true },
-		{ id: 2, text: `Todo 2`, completed: false },
-		{ id: 3, text: `Todo 3`, completed: false },
-		{ id: 4, text: `Todo 4`, completed: false }
-	]
+	/*--------Iterating through list----------*/
 
+	// let todos = [
+	// 	{ id: 1, text: `Todo 1`, completed: true },
+	// 	{ id: 2, text: `Todo 2`, completed: false },
+	// 	{ id: 3, text: `Todo 3`, completed: false },
+	// 	{ id: 4, text: `Todo 4`, completed: false }
+	// ]
+
+	/*--------Fetchin pokemon data----------*/
+	async function fetchPokemon(pokemonName) {
+		let url = `https://pokeapi.co/api/v2/pokemon/`;
+		let response = await fetch(`${url}${pokemonName}`);
+		let { name, sprites } = await response.json();
+
+		return {
+			name,
+			image: sprites['front_default']
+		}
+	}
 
 </script>
 
@@ -103,11 +119,20 @@
 	<button on:click={toggle}>Log In</button>
 {/if} -->
 
-<ul>
+<!-- <ul>
 	{#each todos as { id, text, completed }, index(id)}
 		<li>
 			<input checked={completed} type="checkbox">
 			<span>{text}</span>
 		</li>
 	{/each}
-</ul>
+</ul> -->
+
+{#await fetchPokemon('pikachu')}
+	<p>Fetching data...</p>
+{:then pokemon} 
+	<h1>{pokemon.name}</h1>
+	<img src={pokemon.image} alt={pokemon.name}>
+{:catch error}
+	<p>Something went wrong: {error.message}</p>
+{/await}
