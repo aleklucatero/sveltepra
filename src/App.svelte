@@ -1,4 +1,6 @@
 <script>
+    import { each } from "svelte/internal";
+
     // import { add } from "date-fns";
 
 	// let count = 0;
@@ -58,13 +60,21 @@
 
 	// }
 
-	let twitteruser = {
-		loggedIn: false
-	};
-	
-	function toggle() {
-		twitteruser.loggedIn = !twitteruser.loggedIn;
-	};
+	// let user = {
+	// 	loggedIn: true
+	// }
+
+	// function toggle() {
+	// 	user.loggedIn = !user.loggedIn;
+	// };
+
+	let todos = [
+		{ id: 1, text: `Todo 1`, completed: true },
+		{ id: 2, text: `Todo 2`, completed: false },
+		{ id: 3, text: `Todo 3`, completed: false },
+		{ id: 4, text: `Todo 4`, completed: false }
+	]
+
 
 </script>
 
@@ -84,11 +94,20 @@
 
 <p>Album length is {albumLength.minutes} minutes and {albumLength.seconds} seconds.</p>
 <button on:click={addTrack}>Add track</button> -->
-
-{#if twitteruser.loggedIn}
-	<button on:click={toggle}>Log in</button>
+ 
+<!-- {#if user.loggedIn}
+	<button on:click={toggle}>Log Out</button>
 {/if}
 
-{#if !twitteruser.loggedIn}
-	<button on:click={toggle}>Log out</button>
-{/if}
+{#if !user.loggedIn}
+	<button on:click={toggle}>Log In</button>
+{/if} -->
+
+<ul>
+	{#each todos as todo}
+		<li>
+			<input checked={todo.comepleted} type="checkbox">
+			<span>{todo.text}</span>
+		</li>
+	{/each}
+</ul>
