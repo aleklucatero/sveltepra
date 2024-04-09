@@ -14,12 +14,20 @@
 	};
 
 	/*--------Adding number to list----------*/
-
+   
 	let items = [1, 2, 3, 4];
 	$: amount = items.length;
 
 	function addItems() {
 		items = [...items, items.length + 1]
+	}
+
+	/*--------Adding a string----------*/
+	let countries = [`USA`, `Mexico`];
+	$: newCountry = countries[countries.length - 1];
+
+	function addCountry() {
+		countries = [...countries, `Italy`];
 	}
 
 </script>
@@ -34,6 +42,11 @@
 
 <p class="items">The amount is {amount}</p>
 <button on:click={addItems}>Add item</button>
+
+<p>The new country is {newCountry}</p>
+<button on:click={addCountry}>Add country</button>
+
+
 
 
 <style>
