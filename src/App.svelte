@@ -104,7 +104,7 @@
 {/if} -->
 
 <ul>
-	{#each todos as { id, text, completed }}
+	{#each todos as { id, text, completed }, index(id)}
 		<li>
 			<input checked={completed} type="checkbox">
 			<span>{text}</span>
