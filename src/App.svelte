@@ -104,10 +104,10 @@
 {/if} -->
 
 <ul>
-	{#each todos as todo}
+	{#each todos as { id, text, completed }}
 		<li>
-			<input checked={todo.comepleted} type="checkbox">
-			<span>{todo.text}</span>
+			<input checked={completed} type="checkbox">
+			<span>{text}</span>
 		</li>
 	{/each}
 </ul>
