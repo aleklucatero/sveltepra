@@ -1,5 +1,5 @@
-<script>
+<!-- <script>
     export let artistName
 </script>
 
-<h1>{artistName}</h1>
+<h1>{artistName}</h1> -->

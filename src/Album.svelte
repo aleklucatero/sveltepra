@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import AlbumTrack from "./AlbumTrack.svelte"
 
     export let albumTitle
@@ -18,4 +18,4 @@
     {#each albumTracks as track}
     <AlbumTrack {setPlaying} {playing} {...track} />
     {/each}
-</ul>
+</ul> -->

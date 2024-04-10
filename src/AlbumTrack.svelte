@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     export let setPlaying
     export let playing
     export let title
@@ -18,4 +18,4 @@
     .playing {
         color: teal;
     }
-</style>
+</style> -->

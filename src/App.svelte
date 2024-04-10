@@ -122,29 +122,31 @@
 	// }
 
 	/*--------Components----------*/
-	import Artist from "./Artist.svelte"
-	import Album from "./Album.svelte"
+	// import Artist from "./Artist.svelte"
+	// import Album from "./Album.svelte"
 	
-	let artist = [
-		{
-			name: `Fleetwood Mac`,
-			albums:  [
-				{
-					name: `Tango in the Night`,
-					year: 1987,
-					tracks: [
-						{ title: `Big Love`, length: `3:37` },
-						{ title: `Seven Wonders`, length: `3:38` },
-						{ title: `Everywhere`, length: `3:48` },
-						{ title: `Caroline`, length: `3:50` },
-						{ title: `Tango in the Night`, length: `3:56` },
-						{ title: `Mystified`, length: `3:08` },
-					]
-				}
-			]
-		}
-	]
+	// let artist = [
+	// 	{
+	// 		name: `Fleetwood Mac`,
+	// 		albums:  [
+	// 			{
+	// 				name: `Tango in the Night`,
+	// 				year: 1987,
+	// 				tracks: [
+	// 					{ title: `Big Love`, length: `3:37` },
+	// 					{ title: `Seven Wonders`, length: `3:38` },
+	// 					{ title: `Everywhere`, length: `3:48` },
+	// 					{ title: `Caroline`, length: `3:50` },
+	// 					{ title: `Tango in the Night`, length: `3:56` },
+	// 					{ title: `Mystified`, length: `3:08` },
+	// 				]
+	// 			}
+	// 		]
+	// 	}
+	// ]
 
+	/*--------Slots----------*/
+	import Button from "./Button.svelte"
 
 </script>
 
@@ -218,7 +220,7 @@
 	{/each}
 </ul> -->
 
-{#each artist as artist}
+<!-- {#each artist as artist}
 	<Artist artistName={artist.name} />
 		{#each artist.albums as album}
 			<Album
@@ -226,4 +228,19 @@
 				albumTracks={album.tracks}
 			/>
 		{/each}
-{/each}
+{/each} -->
+
+<Button>
+	<span slot="icon">+</span>
+	<span slot="text">Add</span>
+</Button>
+
+<Button>
+	<span slot="icon">+</span>
+	<span slot="text">Add</span>
+</Button>
+
+<Button>
+	<span slot="icon">-</span>
+	<span slot="text">Delete</span>
+</Button>
