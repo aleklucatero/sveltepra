@@ -1,4 +1,4 @@
-<button>
+<!-- <button>
     <slot name="icon"></slot>
     <slot name="text"></slot>
 </button>
@@ -8,4 +8,4 @@
         color: teal;
     }
     
-</style>
+</style> -->

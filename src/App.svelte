@@ -146,7 +146,24 @@
 	// ]
 
 	/*--------Slots----------*/
-	import Button from "./Button.svelte"
+	// import Button from "./Button.svelte"
+
+	/*--------Animations----------*/
+	// import { fade } from "svelte/transition";
+
+	// let showFade = false
+	
+	// function toggleFade() {
+	// 	showFade = !showFade
+	// }
+
+	/*--------Working with stores----------*/
+	import { message } from "./stores.js"
+
+	function updateStore() {
+		$message = `Bye`
+	}
+
 
 </script>
 
@@ -230,7 +247,7 @@
 		{/each}
 {/each} -->
 
-<Button>
+<!-- <Button>
 	<span slot="icon">+</span>
 	<span slot="text">Add</span>
 </Button>
@@ -243,4 +260,17 @@
 <Button>
 	<span slot="icon">-</span>
 	<span slot="text">Delete</span>
-</Button>
+</Button> -->
+
+<!-- <button on:click={toggleFade}>
+	Wax poetic
+</button>
+
+{#if showFade}
+	<blockquote transition:fade={{ delay: 250, duration: 300 }}>
+		Memories fade, but friends are forever
+	</blockquote>
+{/if} -->
+
+<p>{$message}</p>
+<button on:click={updateStore}>Click</button>
