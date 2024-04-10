@@ -158,12 +158,18 @@
 	// }
 
 	/*--------Working with stores----------*/
-	import { message } from "./stores.js"
+	// import { message } from "./stores.js"
 
-	function updateStore() {
-		$message = `Bye`
-	}
+	// function updateStore() {
+	// 	$message = `Bye`
+	// }
 
+	/*--------More Working with stores----------*/
+	import { localStorageStore } from "./stores.js"
+
+	let message = localStorageStore(`mesage`, `Hello`)
+
+	$message = `Bye`
 
 </script>
 
@@ -272,5 +278,7 @@
 	</blockquote>
 {/if} -->
 
-<p>{$message}</p>
-<button on:click={updateStore}>Click</button>
+<!-- <p>{$message}</p>
+<button on:click={updateStore}>Click</button> -->
+
+{$message}
