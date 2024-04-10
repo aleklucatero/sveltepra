@@ -1,6 +1,6 @@
 <script>
-    import { errorToJSON } from "next/dist/server/render";
-import { each } from "svelte/internal";
+// import { errorToJSON } from "next/dist/server/render";
+// import { each } from "svelte/internal";
 
     // import { add } from "date-fns";
 
@@ -81,16 +81,25 @@ import { each } from "svelte/internal";
 	// ]
 
 	/*--------Fetchin pokemon data----------*/
-	async function fetchPokemon(pokemonName) {
-		let url = `https://pokeapi.co/api/v2/pokemon/`;
-		let response = await fetch(`${url}${pokemonName}`);
-		let { name, sprites } = await response.json();
+	// async function fetchPokemon(pokemonName) {
+	// 	let url = `https://pokeapi.co/api/v2/pokemon/`;
+	// 	let response = await fetch(`${url}${pokemonName}`);
+	// 	let { name, sprites } = await response.json();
 
-		return {
-			name,
-			image: sprites['front_default']
-		}
+	// 	return {
+	// 		name,
+	// 		image: sprites['front_default']
+	// 	}
+	// }
+
+	/*--------Using directives----------*/
+	let mouse = { x: 0, y: 0 };
+
+	function handleMouseMove(event) {
+		mouse.x = event.clientX
+		mouse.y = event.clientY
 	}
+
 
 </script>
 
@@ -128,11 +137,21 @@ import { each } from "svelte/internal";
 	{/each}
 </ul> -->
 
-{#await fetchPokemon('pikachu')}
+<!-- {#await fetchPokemon('pikachu')}
 	<p>Fetching data...</p>
 {:then pokemon} 
 	<h1>{pokemon.name}</h1>
 	<img src={pokemon.image} alt={pokemon.name}>
 {:catch error}
 	<p>Something went wrong: {error.message}</p>
-{/await}
+{/await} -->
+
+<div on:mousemove={handleMouseMove}>
+	The mouse position is {mouse.x} x {mouse.y}
+</div>
+
+<style>
+	div {
+		height: 100%;
+	}
+</style>
