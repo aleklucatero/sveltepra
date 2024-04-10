@@ -1,4 +1,7 @@
 <script>
+    // import { lightFormat } from "date-fns";
+    // import { filter } from "lodash-es";
+
 // import { errorToJSON } from "next/dist/server/render";
 // import { each } from "svelte/internal";
 
@@ -101,9 +104,20 @@
 	// }
 
 	/*--------Another example of using preventDefault----------*/
-	function onSubmit() {
-		console.log(`Form submitted`);
-	}
+	// function onSubmit() {
+	// 	console.log(`Form submitted`);
+	// }
+
+	/*--------Data Binding, filterig list through search----------*/
+	let list = [`React`, `Vue`, `Svelte`];
+	let filteredList = [];
+	let searchQuery = ``;
+
+	function filterList() {
+		filteredList = list.filter(item => {
+			return item.toLowerCase().includes(searchQuery.toLowerCase())
+		});
+	};
 
 </script>
 
@@ -160,7 +174,19 @@
 	}
 </style> -->
  
-<form on:submit|preventDefault={onSubmit}>
+<!-- <form on:submit|preventDefault={onSubmit}>
 	<input type="text">
-	<button>Submit form</button>
-</form>
+	<button type="submit">Submit</button>
+</form> -->
+
+<input 
+	on:input={filterList}
+	bind:value={searchQuery}
+	type="text"
+/>
+
+<ul>
+	{#each filteredList as item}
+	<li>{item}</li>
+	{/each}
+</ul>
