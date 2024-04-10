@@ -93,13 +93,17 @@
 	// }
 
 	/*--------Using directives----------*/
-	let mouse = { x: 0, y: 0 };
+	// let mouse = { x: 0, y: 0 };
 
-	function handleMouseMove(event) {
-		mouse.x = event.clientX
-		mouse.y = event.clientY
+	// function handleMouseMove(event) {
+	// 	mouse.x = event.clientX
+	// 	mouse.y = event.clientY
+	// }
+
+	/*--------Another example of using preventDefault----------*/
+	function onSubmit() {
+		console.log(`Form submitted`);
 	}
-
 
 </script>
 
@@ -146,7 +150,7 @@
 	<p>Something went wrong: {error.message}</p>
 {/await} -->
 
-<div on:mousemove={handleMouseMove}>
+<!-- <div on:mousemove={handleMouseMove}>
 	The mouse position is {mouse.x} x {mouse.y}
 </div>
 
@@ -154,4 +158,9 @@
 	div {
 		height: 100%;
 	}
-</style>
+</style> -->
+ 
+<form on:submit|preventDefault={onSubmit}>
+	<input type="text">
+	<button>Submit form</button>
+</form>
