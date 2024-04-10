@@ -1,4 +1,6 @@
 <script>
+    import { each } from "svelte/internal";
+
     // import { lightFormat } from "date-fns";
     // import { filter } from "lodash-es";
 
@@ -109,15 +111,40 @@
 	// }
 
 	/*--------Data Binding, filterig list through search----------*/
-	let list = [`React`, `Vue`, `Svelte`];
-	let filteredList = [];
-	let searchQuery = ``;
+	// let list = [`React`, `Vue`, `Svelte`];
+	// let filteredList = [];
+	// let searchQuery = ``;
 
-	function filterList() {
-		filteredList = list.filter(item => {
-			return item.toLowerCase().includes(searchQuery.toLowerCase())
-		});
-	};
+	// function filterList() {
+	// 	filteredList = list.filter(item => {
+	// 		return item.toLowerCase().includes(searchQuery.toLowerCase());
+	// 	});
+	// }
+
+	/*--------Components----------*/
+	import Artist from "./Artist.svelte"
+	import Album from "./Album.svelte"
+	
+	let artist = [
+		{
+			name: `Fleetwood Mac`,
+			albums:  [
+				{
+					name: `Tango in the Night`,
+					year: 1987,
+					tracks: [
+						{ title: `Big Love`, length: `3:37` },
+						{ title: `Seven Wonders`, length: `3:38` },
+						{ title: `Everywhere`, length: `3:48` },
+						{ title: `Caroline`, length: `3:50` },
+						{ title: `Tango in the Night`, length: `3:56` },
+						{ title: `Mystified`, length: `3:08` },
+					]
+				}
+			]
+		}
+	]
+
 
 </script>
 
@@ -179,7 +206,7 @@
 	<button type="submit">Submit</button>
 </form> -->
 
-<input 
+<!-- <input 
 	on:input={filterList}
 	bind:value={searchQuery}
 	type="text"
@@ -187,6 +214,16 @@
 
 <ul>
 	{#each filteredList as item}
-	<li>{item}</li>
+		<li>{item}</li>
 	{/each}
-</ul>
+</ul> -->
+
+{#each artist as artist}
+	<Artist artistName={artist.name} />
+		{#each artist.albums as album}
+			<Album
+				albumTitle={album.name}
+				albumTracks={album.tracks}
+			/>
+		{/each}
+{/each}
