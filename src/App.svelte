@@ -165,11 +165,21 @@
 	// }
 
 	/*--------More Working with stores----------*/
-	import { localStorageStore } from "./stores.js"
+	// import { localStorageStore } from "./stores.js"
 
-	let message = localStorageStore(`mesage`, `Hello`)
+	// let message = localStorageStore(`mesage`, `Hello`)
 
-	$message = `Bye`
+	// $message = `Bye`
+
+	/*--------Social Media site----------*/
+	let email = ``;
+	let password = ``;
+
+	function handleSubmit() {
+
+	};
+
+
 
 </script>
 
@@ -281,4 +291,78 @@
 <!-- <p>{$message}</p>
 <button on:click={updateStore}>Click</button> -->
 
-{$message}
+<!-- {$message} -->
+
+<style>
+	.container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100vh;
+	}
+
+	.left {
+		width: 50%;
+		padding: 0 2rem;
+	}
+
+	.right {
+		width: 50%;
+		padding: 0 2rem;
+	}
+
+	.logo {
+		width: 80%;
+		max-width: 300px;
+		margin-bottom: 2rem;
+	}
+
+	form  {
+		background-color: #f0f0f0;
+		padding: 2rem;
+		border-radius: 10px;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+	
+	input[type="email"],
+	input[type="password"] {
+		width: 100%;
+		padding: 0.5rem;
+		margin-bottom: 1rem;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+	}
+
+	input[type="submit"] {
+		width: 100%;
+		padding: 0.75rem;
+		background-color: #007bff;
+		color: #fff;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: background-color 0.3s ease;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #0056b3;
+	}
+
+
+</style>
+
+<div class="container">
+    <div class="left">
+        <img src="logo.png" alt="Social Media Logo" class="logo">
+        <h1>Lorem Ipsum Dolor Sit Amet</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    </div>
+    <div class="right">
+        <form on:submit|preventDefault={handleSubmit}>
+            <h2>Login</h2>
+            <input type="email" placeholder="Email" bind:value={email}>
+            <input type="password" placeholder="Password" bind:value={password}>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
